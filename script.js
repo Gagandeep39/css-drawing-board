@@ -17,21 +17,18 @@ canvas.addEventListener('mousedown', (e) => {
   isPressed = true;
   x = e.offsetX;
   y = e.offsetY;
-  console.log(isPressed, x, y);
 });
 
 canvas.addEventListener('mouseup', (e) => {
   isPressed = false;
   x = undefined;
   y = undefined;
-  console.log(isPressed, x, y);
 });
 
 canvas.addEventListener('mousemove', (e) => {
   if (isPressed) {
     const x2 = e.offsetX;
     const y2 = e.offsetY;
-    console.log(isPressed, x2, y2);
     drawCircle(x2, y2);
 
     // Fix Dots effect when we drag ouse too fast
@@ -62,8 +59,6 @@ function updateSizeOnScreen() {
   sizeEl.innerText = size;
 }
 
-drawCircle(100, 200);
-drawLine(5, 5, 100, 120);
 
 // INcrease Brush size
 increaseBtn.addEventListener('click', () => {
