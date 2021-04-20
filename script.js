@@ -3,6 +3,23 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let size = 20;
 let color = 'black';
+let x;
+let y;
+let isPressed = false;
+
+canvas.addEventListener('mousedown', (e) => {
+  isPressed = true;
+  x = e.offsetX;
+  y = e.offsetY;
+  console.log(isPressed, x, y);
+});
+
+canvas.addEventListener('mouseup', (e) => {
+  isPressed = false;
+  x = undefined;
+  y = undefined;
+  console.log(isPressed, x, y);
+});
 
 function drawCircle(x, y) {
   ctx.beginPath();
