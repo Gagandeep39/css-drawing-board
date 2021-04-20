@@ -21,6 +21,20 @@ canvas.addEventListener('mouseup', (e) => {
   console.log(isPressed, x, y);
 });
 
+canvas.addEventListener('mousemove', (e) => {
+  if (isPressed) {
+    const x2 = e.offsetX;
+    const y2 = e.offsetY;
+    console.log(isPressed, x2, y2);
+    drawCircle(x2, y2);
+
+    // Fix Dots effect when we drag ouse too fast
+    drawLine(x, y, x2, y2);
+    x = x2;
+    y = y2;
+  }
+});
+
 function drawCircle(x, y) {
   ctx.beginPath();
   ctx.arc(x, y, size, 0, Math.PI * 2); // Outer circle
@@ -33,7 +47,7 @@ function drawLine(x1, y1, x2, y2) {
   ctx.moveTo(x1, y1);
   ctx.lineTo(x2, y2);
   ctx.strokeStyle = color;
-  ctx.lineWidth = size;
+  ctx.lineWidth = size * 2; // Line width mst be approx equal to circle diameter
   ctx.stroke();
 }
 
